@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Darlyn & Alvaro — Nuestra Boda Civil 💚">
+<meta property="og:description" content="Viernes 10 de julio · 4:00 pm · San Antonio Aguas Calientes. ¡Toca para abrir tu invitación!">
+<meta property="og:type" content="website">
+<title>Darlyn &amp; Alvaro — Nuestra Boda Civil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Great+Vibes&family=Anton&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --fondo:#F7FAF5;
+    --blanco:#FFFFFF;
+    --verde:#3E6B4F;        /* verde salvia profundo */
+    --verde-oscuro:#2C4E3A;
+    --verde-claro:#8FAE96;
+    --verde-tenue:#DCE9DD;
+    --rosa:#E8AFB7;         /* rubor romántico */
+    --rosa-suave:#F6DDE1;
+    --oro:#B99A5B;
+    --oro-claro:#DCC084;
+    --tinta:#33403A;
+    --linea:rgba(62,107,79,.28);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Jost',sans-serif;font-weight:300;
+    background:var(--fondo);color:var(--tinta);
+    line-height:1.75;letter-spacing:.02em;overflow-x:hidden;
+  }
+  h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif}
+  .script{font-family:'Great Vibes',cursive;font-weight:400}
+
+  /* ============ PORTADA ============ */
+  #portada{
+    position:fixed;inset:0;z-index:100;
+    background:radial-gradient(ellipse at 50% 35%, #3A614A 0%, #2C4E3A 60%, #22402E 100%);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;color:#F2F7F0;
+    transition:opacity 1.2s ease, visibility 1.2s;
+    overflow:hidden;cursor:pointer;padding:2rem;
+  }
+  #portada.abierta{opacity:0;visibility:hidden}
+  .portada-contenido{position:relative;z-index:2;width:100%}
+  .aro{
+    width:170px;height:170px;border-radius:50%;
+    border:1px solid rgba(233,197,107,.7);
+    display:flex;align-items:center;justify-content:center;
+    position:relative;margin:0 auto 1.8rem;
+  }
+  .aro::before{content:"";position:absolute;inset:8px;border-radius:50%;border:1px dashed rgba(233,197,107,.4)}
+  .aro .script{font-size:3.4rem;color:#EBD9A8;line-height:1}
+  .portada-script{
+    font-family:'Great Vibes',cursive;
+    font-size:clamp(2.6rem,10vw,3.8rem);
+    color:#EBD9A8;line-height:1.1;
+    text-shadow:0 2px 18px rgba(0,0,0,.35);
+  }
+  .portada-sub{
+    margin-top:1rem;font-size:.72rem;letter-spacing:.5em;text-transform:uppercase;
+    color:#E9C56B;
+  }
+  .portada-texto{
+    margin-top:1.8rem;font-size:.68rem;letter-spacing:.45em;text-transform:uppercase;
+    color:rgba(242,247,240,.85);animation:pulso 2.6s ease-in-out infinite;
+  }
+  @keyframes pulso{0%,100%{opacity:.5}50%{opacity:1}}
+
+  /* corazones flotando */
+  .corazon-f{
+    position:absolute;bottom:-40px;z-index:1;
+    color:rgba(233,197,107,.5);
+    animation:flotar linear infinite;
+    pointer-events:none;
+  }
+  @keyframes flotar{
+    0%{transform:translateY(0) rotate(0deg);opacity:0}
+    12%{opacity:1}
+    100%{transform:translateY(-110vh) rotate(28deg);opacity:0}
+  }
+
+  /* ============ RAMAS LATERALES ============ */
+  .rama{
+    position:fixed;top:0;height:100vh;width:90px;z-index:1;
+    color:var(--verde-claro);opacity:.4;pointer-events:none;
+  }
+  .rama.izq{left:0}
+  .rama.der{right:0;transform:scaleX(-1)}
+  @media(max-width:760px){.rama{display:none}}
+
+  /* ============ SECCIONES ============ */
+  section{padding:4.6rem 1.5rem;max-width:640px;margin:0 auto;text-align:center;position:relative;z-index:2}
+  .eyebrow{font-size:.7rem;letter-spacing:.45em;text-transform:uppercase;color:var(--oro);margin-bottom:1rem}
+
+  .divisor-corazon{width:190px;margin:0 auto 1.5rem;color:var(--verde)}
+  .divisor-corazon svg{width:100%;height:auto;display:block}
+
+  /* HERO */
+  #hero{padding-top:5.5rem}
+  .hoja-arriba{width:120px;margin:0 auto 1.4rem;color:var(--verde-claro)}
+  .hoja-arriba svg{width:100%;height:auto}
+  #hero h1{
+    font-size:clamp(2.6rem,10vw,4.2rem);font-weight:500;
+    color:var(--verde-oscuro);line-height:1.12;
+  }
+  #hero .y{
+    font-family:'Great Vibes',cursive;color:var(--oro);
+    font-size:clamp(2.4rem,8vw,3.4rem);display:block;margin:.1rem 0;
+  }
+  .invitan{font-size:.82rem;letter-spacing:.35em;text-transform:uppercase;color:#6e7a70;margin-bottom:1.6rem}
+  .fecha-pill{
+    display:inline-flex;align-items:center;gap:1rem;margin-top:2rem;
+    border:1px solid var(--linea);border-radius:999px;
+    padding:.8rem 2rem;background:var(--blanco);
+  }
+  .fecha-pill .dia{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:500;color:var(--verde);line-height:1}
+  .fecha-pill .lado{font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;color:#5c685e;text-align:left}
+  .frase{
+    margin-top:2.2rem;font-family:'Great Vibes',cursive;
+    font-size:1.8rem;color:var(--verde);line-height:1.4;
+  }
+  .frase small{display:block;font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--oro);margin-top:.6rem}
+
+  /* MENSAJE DE LOS NOVIOS */
+  #mensaje{background:var(--verde-tenue);max-width:none}
+  #mensaje .inner{max-width:600px;margin:0 auto}
+  .carta-mensaje{
+    position:relative;background:var(--blanco);border-radius:18px;
+    border:1px solid var(--linea);
+    padding:3rem 2.2rem 2.4rem;margin-top:2rem;
+    box-shadow:0 10px 30px rgba(62,107,79,.10);
+    font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:#41504a;
+  }
+  .carta-mensaje .comillas{
+    position:absolute;top:-14px;left:50%;transform:translateX(-50%);
+    width:52px;height:52px;border-radius:50%;
+    background:var(--rosa);color:#fff;
+    font-family:'Cormorant Garamond',serif;font-size:2.6rem;line-height:1.5;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 14px rgba(0,0,0,.15);
+  }
+  .carta-mensaje em{color:var(--verde);font-weight:600}
+  .carta-mensaje .firma{
+    margin-top:1.6rem;font-size:1.9rem;color:var(--verde);
+  }
+  .testigos-grid{
+    display:flex;justify-content:center;gap:1.4rem;flex-wrap:wrap;margin-top:1.4rem;
+  }
+  .testigo{
+    background:var(--blanco);border:1px solid var(--linea);border-radius:14px;
+    padding:1.4rem 2rem;min-width:200px;
+  }
+  .t-nombre{font-size:1.3rem;font-weight:600;color:var(--verde-oscuro)}
+  .t-rol{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--oro);margin-top:.3rem}
+
+  /* CUENTA REGRESIVA */
+  #cuenta{background:var(--verde-oscuro);max-width:none;color:#F2F7F0}
+  #cuenta .inner{max-width:640px;margin:0 auto}
+  #cuenta .script{font-size:2.4rem;color:var(--oro-claro)}
+  .contador{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:1.6rem}
+  .bloque{
+    min-width:80px;padding:1.1rem .6rem;border-radius:14px;
+    background:rgba(255,255,255,.07);border:1px solid rgba(232,175,183,.35);
+  }
+  .bloque .num{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:500;color:#fff;line-height:1}
+  .bloque .lbl{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;margin-top:.5rem;color:var(--oro-claro)}
+
+  /* TARJETAS */
+  .tarjeta{
+    position:relative;border:1px solid var(--linea);border-radius:18px;
+    padding:3rem 2rem 2.6rem;margin-top:2.4rem;background:var(--blanco);
+    box-shadow:0 10px 30px rgba(62,107,79,.08);
+  }
+  .tarjeta .icono{width:56px;height:56px;margin:0 auto 1rem;color:var(--verde)}
+  .tarjeta .icono svg{width:100%;height:100%}
+  .tarjeta h3{font-size:1.9rem;font-weight:500;color:var(--verde-oscuro)}
+  .tarjeta .sub{font-family:'Great Vibes',cursive;font-size:1.5rem;color:var(--oro);margin-bottom:.8rem}
+  .dato{margin-top:1.1rem}
+  .dato .k{font-size:.68rem;letter-spacing:.38em;text-transform:uppercase;color:var(--oro)}
+  .dato .v{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--tinta)}
+
+  .boton{
+    display:inline-block;margin-top:1.8rem;padding:.95rem 2.8rem;border-radius:999px;
+    border:1px solid var(--verde);color:var(--verde);
+    text-decoration:none;font-size:.74rem;letter-spacing:.34em;text-transform:uppercase;
+    transition:background .3s,color .3s;
+  }
+  .boton:hover{background:var(--verde);color:#fff}
+  .boton.solido{background:var(--verde);color:#fff}
+  .boton.solido:hover{background:var(--verde-oscuro)}
+
+  /* DRESS CODE */
+  .paleta{display:flex;justify-content:center;gap:.9rem;margin-top:1.6rem}
+  .swatch{
+    width:38px;height:38px;border-radius:50%;
+    border:1px solid rgba(0,0,0,.06);
+    box-shadow:0 0 0 3px var(--fondo), 0 0 0 4px var(--linea);
+  }
+
+  footer{
+    background:var(--verde-oscuro);color:rgba(242,247,240,.85);
+    text-align:center;padding:4rem 1.5rem;
+  }
+  footer .script{font-size:2.6rem;color:var(--oro-claro)}
+  footer p{font-size:.72rem;letter-spacing:.35em;text-transform:uppercase;margin-top:1.2rem}
+  footer .mini-corazon{width:22px;margin:1rem auto 0;color:var(--rosa)}
+  footer .mini-corazon svg{width:100%;fill:currentColor}
+
+
+  /* ============ AJUSTES PARA CELULAR ============ */
+  @media (max-width: 480px){
+    section{padding:3.4rem 1.1rem}
+    .aro{width:145px;height:145px}
+    .aro .script{font-size:2.9rem}
+    .fecha-pill{gap:.8rem;padding:.7rem 1.4rem}
+    .fecha-pill .dia{font-size:2rem}
+    .fecha-pill .lado{font-size:.64rem}
+    .frase{font-size:1.5rem}
+    .contador{gap:.6rem}
+    .bloque{min-width:70px;padding:.9rem .4rem}
+    .bloque .num{font-size:2.1rem}
+    .carta-mensaje{padding:2.6rem 1.4rem 2rem;font-size:1.08rem}
+    .testigos-grid{flex-direction:column;align-items:stretch;gap:.9rem}
+    .testigo{min-width:0}
+    .tarjeta{padding:2.4rem 1.3rem 2.2rem}
+    .dato .v{font-size:1.2rem}
+    .boton{display:block;margin-left:auto;margin-right:auto;max-width:320px}
+  }
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.visible{opacity:1;transform:none}
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .portada-texto{animation:none}
+    .corazon-f{display:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== PORTADA ==================== -->
+<div id="portada" onclick="abrir()">
+  <div class="portada-contenido">
+    <div class="aro"><span class="script">D&nbsp;·&nbsp;A</span></div>
+    <div class="portada-script">Darlyn &amp; Alvaro</div>
+    <div class="portada-sub">Nuestra Boda Civil · 10 · Julio · 2026</div>
+    <div class="portada-texto">Toca para abrir la invitación</div>
+  </div>
+</div>
+
+<!-- ==================== RAMAS BOTÁNICAS LATERALES ==================== -->
+<div class="rama izq">
+  <svg viewBox="0 0 90 800" fill="none" stroke="currentColor" stroke-width="1.5" preserveAspectRatio="xMinYMid slice">
+    <path d="M20 0 C40 150, 10 300, 35 450 C55 580, 15 700, 30 800"/>
+    <g fill="currentColor" stroke="none">
+      <path d="M28 90 q-16 -4 -22 -18 q17 2 22 18z"/>
+      <path d="M30 160 q18 -2 26 -15 q-18 -2 -26 15z"/>
+      <path d="M22 240 q-16 -5 -21 -19 q17 3 21 19z"/>
+      <path d="M26 330 q18 -3 25 -16 q-18 -1 -25 16z"/>
+      <path d="M34 420 q-17 -4 -23 -18 q18 2 23 18z"/>
+      <path d="M40 520 q18 -2 26 -15 q-18 -2 -26 15z"/>
+      <path d="M28 610 q-16 -5 -21 -19 q17 3 21 19z"/>
+      <path d="M26 700 q18 -3 25 -16 q-18 -1 -25 16z"/>
+    </g>
+  </svg>
+</div>
+<div class="rama der">
+  <svg viewBox="0 0 90 800" fill="none" stroke="currentColor" stroke-width="1.5" preserveAspectRatio="xMinYMid slice">
+    <path d="M20 0 C40 150, 10 300, 35 450 C55 580, 15 700, 30 800"/>
+    <g fill="currentColor" stroke="none">
+      <path d="M28 90 q-16 -4 -22 -18 q17 2 22 18z"/>
+      <path d="M30 160 q18 -2 26 -15 q-18 -2 -26 15z"/>
+      <path d="M22 240 q-16 -5 -21 -19 q17 3 21 19z"/>
+      <path d="M26 330 q18 -3 25 -16 q-18 -1 -25 16z"/>
+      <path d="M34 420 q-17 -4 -23 -18 q18 2 23 18z"/>
+      <path d="M40 520 q18 -2 26 -15 q-18 -2 -26 15z"/>
+      <path d="M28 610 q-16 -5 -21 -19 q17 3 21 19z"/>
+      <path d="M26 700 q18 -3 25 -16 q-18 -1 -25 16z"/>
+    </g>
+  </svg>
+</div>
+
+<!-- ==================== HERO ==================== -->
+<section id="hero">
+  <div class="hoja-arriba reveal">
+    <svg viewBox="0 0 120 40" fill="none" stroke="currentColor" stroke-width="1.4">
+      <path d="M10 32 Q60 8 110 32"/>
+      <g fill="currentColor" stroke="none">
+        <path d="M30 25 q-4 -12 -14 -15 q2 12 14 15z"/>
+        <path d="M55 17 q-2 -12 -11 -17 q0 12 11 17z"/>
+        <path d="M65 17 q2 -12 11 -17 q0 12 -11 17z"/>
+        <path d="M90 25 q4 -12 14 -15 q-2 12 -14 15z"/>
+      </g>
+      <circle cx="60" cy="14" r="2.4" fill="#E8AFB7" stroke="none"/>
+    </svg>
+  </div>
+  <div class="invitan reveal">Tenemos el honor de invitarte</div>
+  <h1 class="reveal">Darlyn Jazmin <span class="y">&amp;</span> Alvaro Geovany</h1>
+  <div class="eyebrow reveal" style="margin-top:1.4rem">Nuestra Boda Civil</div>
+  <div class="reveal">
+    <div class="fecha-pill">
+      <span class="lado">Viernes<br>Julio</span>
+      <span class="dia">10</span>
+      <span class="lado">2026<br>4:00 pm</span>
+    </div>
+  </div>
+  <p class="frase reveal">"El amor no se mira,<br>se siente… y contigo lo sentí todo."
+    <small>Los esperamos con el corazón</small>
+  </p>
+</section>
+
+<!-- ==================== MENSAJE DE LOS NOVIOS ==================== -->
+<section id="mensaje">
+  <div class="inner">
+    <div class="eyebrow reveal">Un Mensaje Para Ti</div>
+    <h2 class="script reveal" style="font-size:2.6rem;color:var(--verde-oscuro)">De nuestro corazón al tuyo</h2>
+
+    <div class="carta-mensaje reveal">
+      <div class="comillas">"</div>
+      <p>Hay personas que hacen la vida más bonita solo con estar cerca,
+      y tú eres una de ellas.</p>
+      <p style="margin-top:1rem">Después de tanto camino recorrido juntos, llegó el día de decir
+      <em>sí</em> ante la ley y ante quienes más queremos.
+      Nada nos haría más felices que tenerte a nuestro lado
+      en este momento tan importante.</p>
+      <div class="firma script">Con amor, Darlyn &amp; Alvaro</div>
+    </div>
+
+    <div class="testigos reveal">
+      <div class="eyebrow" style="margin-top:2.6rem">Nuestros Testigos de Honor</div>
+      <div class="testigos-grid">
+        <div class="testigo">
+          <div class="t-nombre serif">Dayana Roxana Urizar</div>
+          <div class="t-rol">Testigo de la novia</div>
+        </div>
+        <div class="testigo">
+          <div class="t-nombre serif">Wendy Marisol Rosil</div>
+          <div class="t-rol">Testigo del novio</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== CUENTA REGRESIVA ==================== -->
+<section id="cuenta">
+  <div class="inner reveal">
+    <div class="script">Falta muy poquito…</div>
+    <div class="contador">
+      <div class="bloque"><div class="num" id="dias">0</div><div class="lbl">Días</div></div>
+      <div class="bloque"><div class="num" id="horas">0</div><div class="lbl">Horas</div></div>
+      <div class="bloque"><div class="num" id="min">0</div><div class="lbl">Minutos</div></div>
+      <div class="bloque"><div class="num" id="seg">0</div><div class="lbl">Segundos</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== DETALLES ==================== -->
+<section id="detalles">
+  <div class="eyebrow reveal">El Gran Día</div>
+  <div class="divisor-corazon reveal">
+    <svg viewBox="0 0 190 26" fill="none" stroke="currentColor" stroke-width="1.2">
+      <path d="M8 13 H72"/><path d="M118 13 H182"/>
+      <path d="M95 20 c-6 -4 -11 -8 -11 -12.5 a5 5 0 0 1 11 -2 a5 5 0 0 1 11 2 c0 4.5 -5 8.5 -11 12.5z" fill="#E8AFB7" stroke="#E8AFB7"/>
+      <circle cx="8" cy="13" r="1.8" fill="currentColor"/><circle cx="182" cy="13" r="1.8" fill="currentColor"/>
+    </svg>
+  </div>
+
+  <div class="tarjeta reveal">
+    <div class="icono">
+      <svg viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1.6">
+        <circle cx="24" cy="34" r="13"/><circle cx="38" cy="34" r="13"/>
+        <path d="M24 21 l-4 -7 h8 z"/>
+      </svg>
+    </div>
+    <h3>Ceremonia Civil</h3>
+    <div class="sub">El momento del "sí"</div>
+    <div class="dato"><div class="k">Lugar</div><div class="v">Municipalidad de San Antonio Aguas Calientes</div></div>
+    <div class="dato"><div class="k">Dirección</div><div class="v">3a Avenida 1-06, Zona 3</div></div>
+    <div class="dato"><div class="k">Hora</div><div class="v">4:00 p.m.</div></div>
+    <a class="boton" href="https://share.google/ZG3Rwr9gOSNiAQLjC" target="_blank" rel="noopener">Ver ubicación</a>
+  </div>
+
+</section>
+
+<!-- ==================== CONFIRMACIÓN ==================== -->
+<section id="rsvp">
+  <div class="eyebrow reveal">Confirmación</div>
+  <div class="divisor-corazon reveal">
+    <svg viewBox="0 0 190 26" fill="none" stroke="currentColor" stroke-width="1.2">
+      <path d="M8 13 H72"/><path d="M118 13 H182"/>
+      <path d="M95 20 c-6 -4 -11 -8 -11 -12.5 a5 5 0 0 1 11 -2 a5 5 0 0 1 11 2 c0 4.5 -5 8.5 -11 12.5z" fill="#E8AFB7" stroke="#E8AFB7"/>
+      <circle cx="8" cy="13" r="1.8" fill="currentColor"/><circle cx="182" cy="13" r="1.8" fill="currentColor"/>
+    </svg>
+  </div>
+  <h2 class="script reveal" style="font-size:2.8rem;color:var(--verde-oscuro)">¿Nos acompañas?</h2>
+  <p class="reveal" style="margin-top:.6rem;font-size:.95rem;color:#4c5a50">
+    Tu presencia hará este día aún más especial.<br>
+    Por favor confirma tu asistencia.
+  </p>
+  <a class="boton solido reveal" href="https://wa.me/50250948815?text=%C2%A1Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda%20de%20Darlyn%20y%20Alvaro%20%F0%9F%92%9A" target="_blank" rel="noopener">Confirmar por WhatsApp</a>
+</section>
+
+<!-- ==================== PIE ==================== -->
+<footer>
+  <div class="script">Darlyn &amp; Alvaro</div>
+  <div class="mini-corazon">
+    <svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.8 5 5.2 5c2 0 3.4 1.1 4.3 2.6.4.6.6 1 .5 1l.1-.2C11 6.1 12.4 5 14.4 5c3.4 0 4.9 3.6 3.2 6.8C19.5 16.1 12 21 12 21z"/></svg>
+  </div>
+  <p>Con amor, les esperamos</p>
+</footer>
+
+<script>
+  // ====== FECHA DEL EVENTO (año, mes-1, día, hora, minutos) ======
+  const fechaBoda = new Date(2026, 6, 10, 16, 0, 0); // 10 jul 2026, 4:00 pm
+
+  function abrir(){
+    document.getElementById('portada').classList.add('abierta');
+  }
+
+  // Corazones flotando en la portada
+  (function(){
+    const portada = document.getElementById('portada');
+    const svgCorazon = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.9-10-9.2C.3 8.6 1.8 5 5.2 5c2 0 3.4 1.1 4.3 2.6.4.6.6 1 .5 1l.1-.2C11 6.1 12.4 5 14.4 5c3.4 0 4.9 3.6 3.2 6.8C19.5 16.1 12 21 12 21z"/></svg>';
+    for(let i=0;i<14;i++){
+      const c = document.createElement('div');
+      c.className = 'corazon-f';
+      c.innerHTML = svgCorazon;
+      const size = 12 + Math.random()*22;
+      c.style.width = size+'px';
+      c.style.height = size+'px';
+      c.style.left = Math.random()*100+'%';
+      c.style.animationDuration = (7 + Math.random()*8)+'s';
+      c.style.animationDelay = (Math.random()*8)+'s';
+      portada.appendChild(c);
+    }
+  })();
+
+  // Cuenta regresiva
+  function actualizar(){
+    const ahora = new Date();
+    let diff = fechaBoda - ahora;
+    if(diff < 0) diff = 0;
+    document.getElementById('dias').textContent  = Math.floor(diff / 86400000);
+    document.getElementById('horas').textContent = Math.floor((diff % 86400000) / 3600000);
+    document.getElementById('min').textContent   = Math.floor((diff % 3600000) / 60000);
+    document.getElementById('seg').textContent   = Math.floor((diff % 60000) / 1000);
+  }
+  actualizar();
+  setInterval(actualizar, 1000);
+
+  // Animaciones al hacer scroll
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
