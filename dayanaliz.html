@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="color-scheme" content="only light">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:title" content="Darlyn & Alvaro — Cena para Compartir 🤍">
+<meta property="og:description" content="Sábado 11 de julio · 6:00 pm · San Lorenzo El Cubo. ¡Toca para abrir tu invitación!">
+<meta property="og:type" content="website">
+<title>Darlyn &amp; Alvaro — Cena para Compartir</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Italianno&family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --blanco:#FFFFFF;
+    --papel:#FBF6EC;
+    --negro:#4A362A;
+    --gris:#7C6A58;
+    --floral:#CDAE6E;      /* florales de fondo */
+    --oro:#C9A227;
+    --oro-suave:#D9BC6A;
+    --linea:#D9C69C;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;color-scheme:only light}
+  body{
+    background:var(--papel) !important;
+    font-family:'Jost',sans-serif;font-weight:300;
+    background:var(--papel);color:var(--negro);
+    line-height:1.75;letter-spacing:.02em;overflow-x:hidden;
+  }
+  .serif{font-family:'Cormorant Garamond',serif}
+  .script{font-family:'Great Vibes',cursive;font-weight:400}
+  .script2{font-family:'Italianno',cursive;font-weight:400}
+
+  /* ============ FLORALES DE FONDO (líneas grises) ============ */
+  .floral{
+    position:absolute;color:var(--floral);pointer-events:none;z-index:0;opacity:.55;
+  }
+  .floral svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.1}
+
+  /* ============ PORTADA ============ */
+  #portada{
+    position:fixed;inset:0;z-index:100;
+    background:#FFFFFF;color:#1F1F1F;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;color:var(--negro);
+    transition:opacity 1.2s ease, visibility 1.2s;
+    overflow:hidden;cursor:pointer;padding:2rem 1.4rem;
+  }
+  #portada.abierta{opacity:0;visibility:hidden}
+  #portada .contenido{position:relative;z-index:2}
+  #portada .floral{color:#E4E4E1}
+  #portada .portada-nombres,#portada .portada-anio,#portada .div-corazon,#portada .portada-familia .p2{color:#1F1F1F}
+  #portada .portada-evento{color:#6B6B6B}
+  #portada .portada-texto,#portada .portada-familia .p1{color:#9a9a96}
+  #portada .portada-familia{border-top-color:#DADAD6}
+
+  .anillos{width:96px;margin:0 auto .6rem}
+  .anillos svg{width:100%;height:auto}
+
+  .portada-nombres{
+    font-family:'Great Vibes',cursive;
+    font-size:clamp(3rem,13vw,4.6rem);
+    line-height:1.05;color:var(--negro);
+  }
+  .portada-evento{
+    font-family:'Italianno',cursive;
+    font-size:clamp(1.9rem,8vw,2.6rem);
+    color:var(--gris);margin-top:1rem;line-height:1;
+  }
+  .div-corazon{
+    display:flex;align-items:center;justify-content:center;gap:.4rem;
+    margin:1rem auto .3rem;color:var(--negro);width:230px;
+  }
+  .div-corazon svg{width:100%;height:auto}
+  .portada-anio{
+    font-family:'Cormorant Garamond',serif;font-size:1.15rem;letter-spacing:.5em;color:var(--negro);
+  }
+  .portada-texto{
+    margin-top:2.2rem;font-size:.66rem;letter-spacing:.42em;text-transform:uppercase;
+    color:#9A8668;animation:pulso 2.6s ease-in-out infinite;
+  }
+  @keyframes pulso{0%,100%{opacity:.5}50%{opacity:1}}
+
+  .portada-familia{
+    margin-top:1.6rem;padding-top:1.3rem;
+    border-top:1px solid var(--linea);
+    width:min(300px,80vw);margin-left:auto;margin-right:auto;
+  }
+  .portada-familia .p1{font-size:.6rem;letter-spacing:.42em;text-transform:uppercase;color:#9A8668}
+  .portada-familia .p2{font-family:'Great Vibes',cursive;font-size:1.9rem;color:var(--negro);margin-top:.2rem;line-height:1.15}
+  .portada-familia .p3{font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--oro);margin-top:.3rem}
+
+  /* ============ SECCIONES ============ */
+  section{padding:4.2rem 1.4rem;max-width:620px;margin:0 auto;text-align:center;position:relative;z-index:1}
+  .eyebrow{font-size:.66rem;letter-spacing:.45em;text-transform:uppercase;color:var(--oro);margin-bottom:1rem}
+
+  /* HERO */
+  #hero{padding-top:4.6rem}
+  #hero .script{font-size:clamp(3rem,12vw,4.2rem);line-height:1.05;color:#6B4E33}
+  .intro{
+    margin-top:1.4rem;font-family:'Cormorant Garamond',serif;
+    font-size:1.2rem;color:var(--negro);max-width:430px;margin-left:auto;margin-right:auto;
+  }
+  .fecha-linea{
+    margin-top:2rem;
+    font-size:1.05rem;letter-spacing:.3em;text-transform:uppercase;font-weight:400;
+    color:var(--negro);line-height:1.8;
+  }
+  .hora{
+    font-size:.85rem;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--gris);margin-top:.2rem;
+  }
+
+  /* CUENTA REGRESIVA */
+  #cuenta .caja{
+    display:flex;justify-content:center;gap:1.6rem;flex-wrap:wrap;
+    border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);
+    padding:1.8rem .6rem;margin-top:.4rem;
+  }
+  .bloque .num{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:500;color:var(--negro);line-height:1}
+  .bloque .lbl{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;margin-top:.4rem;color:#9A8668}
+
+  /* LA CENA */
+  .datos{
+    margin-top:1.4rem;
+  }
+  .dato{margin-top:1.5rem}
+  .dato .k{font-size:.64rem;letter-spacing:.42em;text-transform:uppercase;color:var(--oro)}
+  .dato .v{font-size:.95rem;letter-spacing:.26em;text-transform:uppercase;font-weight:400;color:var(--negro);line-height:2;margin-top:.3rem}
+
+  .boton{
+    display:inline-block;margin-top:2rem;padding:1rem 2.8rem;
+    background:linear-gradient(120deg,#8A6B3F,#B08D4A);color:#fff;border-radius:999px;
+    text-decoration:none;font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;
+    transition:opacity .3s;
+  }
+  .boton:hover{opacity:.8}
+
+  /* GRACIAS */
+  #gracias p{
+    font-family:'Italianno',cursive;font-size:clamp(1.9rem,8vw,2.5rem);
+    color:var(--negro);line-height:1.25;
+  }
+
+  /* RSVP */
+  .pase-caja{
+    display:inline-block;margin:1.2rem 0 .2rem;
+    border:1px solid var(--linea);border-radius:4px;background:var(--blanco);
+    padding:1.3rem 2.6rem;
+  }
+  .pase-caja .k{font-size:.6rem;letter-spacing:.42em;text-transform:uppercase;color:#9A8668}
+  .pase-caja .n{font-family:'Great Vibes',cursive;font-size:2rem;color:var(--negro);margin-top:.1rem;line-height:1.15}
+  .pase-caja .c{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--oro);margin-top:.3rem}
+
+  footer{
+    text-align:center;padding:3.4rem 1.4rem 4rem;position:relative;z-index:1;
+  }
+  footer .script{font-size:2.8rem;color:#6B4E33}
+  footer p{font-size:.64rem;letter-spacing:.4em;text-transform:uppercase;margin-top:.8rem;color:#9A8668}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.visible{opacity:1;transform:none}
+
+  @media (max-width:480px){
+    section{padding:3.2rem 1.1rem}
+    #cuenta .caja{gap:1.1rem}
+    .bloque .num{font-size:2.1rem}
+    .boton{display:block;max-width:320px;margin-left:auto;margin-right:auto}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    .portada-texto{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== PORTADA ==================== -->
+<div id="portada" onclick="abrir()">
+  <!-- florales de líneas grises -->
+  <div class="floral" style="top:-30px;right:-46px;width:270px;height:270px">
+    <svg viewBox="0 0 200 200">
+      <path d="M100 190 C60 150 60 90 100 40 C140 90 140 150 100 190z"/>
+      <path d="M100 190 C80 140 90 80 100 40 M100 190 C120 140 110 80 100 40"/>
+      <path d="M100 190 C50 170 20 130 18 80 C70 92 95 140 100 190z"/>
+      <path d="M100 190 C150 170 180 130 182 80 C130 92 105 140 100 190z"/>
+      <circle cx="100" cy="30" r="8"/><circle cx="100" cy="30" r="14"/>
+    </svg>
+  </div>
+  <div class="floral" style="bottom:-40px;left:-56px;width:300px;height:300px">
+    <svg viewBox="0 0 200 200">
+      <path d="M20 180 C60 150 110 150 170 170"/>
+      <path d="M55 160 q-8 -30 -34 -40 q4 30 34 40z"/>
+      <path d="M95 152 q-2 -32 -26 -48 q0 32 26 48z"/>
+      <path d="M135 155 q6 -30 32 -42 q-4 32 -32 42z"/>
+      <circle cx="60" cy="105" r="10"/><circle cx="60" cy="105" r="17"/>
+      <path d="M60 88 q4 -12 14 -16 M60 88 q-4 -12 -14 -16"/>
+    </svg>
+  </div>
+
+  <div class="contenido">
+    <div class="anillos">
+      <svg viewBox="0 0 96 56" fill="none">
+        <circle cx="36" cy="32" r="19" stroke="#C9A227" stroke-width="4.5"/>
+        <circle cx="60" cy="30" r="17" stroke="#D9BC6A" stroke-width="4.5"/>
+        <path d="M30 12 l6 -8 l6 8 l-6 4z" fill="#C9A227"/>
+      </svg>
+    </div>
+    <div class="portada-nombres">Darlyn y Alvaro</div>
+    <div class="portada-evento">Cena para Compartir</div>
+    <div class="div-corazon">
+      <svg viewBox="0 0 230 26" fill="none" stroke="currentColor" stroke-width="1.4">
+        <path d="M30 13 H100"/><path d="M130 13 H200"/>
+        <path d="M115 19 c-5 -3.4 -8.8 -6.6 -8.8 -10.2 a4.1 4.1 0 0 1 8.8 -1.6 a4.1 4.1 0 0 1 8.8 1.6 c0 3.6 -3.8 6.8 -8.8 10.2z" fill="currentColor" stroke="none"/>
+        <path d="M30 13 q-8 -7 -18 -6 M30 13 q-8 7 -18 6 M22 13 q-6 -5 -13 -4 M22 13 q-6 5 -13 4" />
+        <path d="M200 13 q8 -7 18 -6 M200 13 q8 7 18 6 M208 13 q6 -5 13 -4 M208 13 q6 5 13 4"/>
+      </svg>
+    </div>
+    <div class="portada-anio">Sábado 11 de Julio · 2026</div>
+    <div class="portada-texto">Toca para abrir la invitación</div>
+    <div class="portada-familia">
+      <div class="p1">Invitación especial para</div>
+      <div class="p2">Dayana y Liz</div>
+      <div class="p3">2 invitadas</div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== HERO ==================== -->
+<div class="floral" style="top:0;right:-20px;width:150px;height:420px;opacity:.8">
+  <svg viewBox="0 0 100 300" fill="none" stroke="#C9A85C" stroke-width="1.6">
+    <path d="M95 0 C60 60, 95 120, 55 180 C30 220, 60 270, 40 300"/>
+    <path d="M100 30 C75 80, 100 130, 70 190"/>
+  </svg>
+</div>
+<section id="hero">
+  <div class="floral" style="top:10px;left:-70px;width:230px;height:230px;transform:rotate(20deg)">
+    <svg viewBox="0 0 200 200">
+      <path d="M100 190 C60 150 60 90 100 40 C140 90 140 150 100 190z"/>
+      <path d="M100 190 C80 140 90 80 100 40 M100 190 C120 140 110 80 100 40"/>
+    </svg>
+  </div>
+  <div class="anillos reveal" style="width:84px;margin:0 auto .4rem">
+    <svg viewBox="0 0 96 56" fill="none">
+      <circle cx="36" cy="32" r="19" stroke="#C9A227" stroke-width="4.5"/>
+      <circle cx="60" cy="30" r="17" stroke="#D9BC6A" stroke-width="4.5"/>
+    </svg>
+  </div>
+  <div class="script reveal">¡Nos casamos!</div>
+  <p class="intro reveal">
+    Unimos nuestras vidas por lo civil, y queremos celebrarlo contigo
+    en una cena para compartir llena de amor y alegría.
+  </p>
+  <div class="fecha-linea reveal">Sábado 11 de Julio</div>
+  <div class="hora reveal">6:00 PM · 2026</div>
+</section>
+
+<!-- ==================== CUENTA REGRESIVA ==================== -->
+<section id="cuenta">
+  <div class="eyebrow reveal">Falta muy poquito</div>
+  <div class="caja reveal">
+    <div class="bloque"><div class="num" id="dias">0</div><div class="lbl">Días</div></div>
+    <div class="bloque"><div class="num" id="horas">0</div><div class="lbl">Horas</div></div>
+    <div class="bloque"><div class="num" id="min">0</div><div class="lbl">Min</div></div>
+    <div class="bloque"><div class="num" id="seg">0</div><div class="lbl">Seg</div></div>
+  </div>
+</section>
+
+<!-- ==================== LA CENA ==================== -->
+<section id="cena">
+  <div class="floral" style="top:30px;right:-64px;width:220px;height:220px;transform:rotate(-15deg)">
+    <svg viewBox="0 0 200 200">
+      <circle cx="100" cy="100" r="14"/><circle cx="100" cy="100" r="24"/>
+      <path d="M100 76 q6 -18 22 -24 M100 76 q-6 -18 -22 -24 M124 92 q18 -6 24 -22 M76 92 q-18 -6 -24 -22"/>
+    </svg>
+  </div>
+  <div class="eyebrow reveal">Te esperamos en</div>
+  <h2 class="script reveal" style="font-size:clamp(2.2rem,9vw,2.9rem);color:#6B4E33">Cena para Compartir</h2>
+  <div class="datos">
+    <div class="dato reveal"><div class="k">Día y Hora</div><div class="v">Sábado 11 de julio · 6:00 p.m.</div></div>
+    <div class="dato reveal"><div class="k">Dirección</div><div class="v">8va Calle 1-59, Zona 1<br>Aldea San Lorenzo El Cubo<br>Ciudad Vieja, Sacatepéquez</div></div>
+  </div>
+</section>
+
+<!-- ==================== GRACIAS ==================== -->
+<section id="gracias">
+  <div class="div-corazon reveal" style="color:#1F1F1F">
+    <svg viewBox="0 0 230 26" fill="none" stroke="currentColor" stroke-width="1.4">
+      <path d="M30 13 H100"/><path d="M130 13 H200"/>
+      <path d="M115 19 c-5 -3.4 -8.8 -6.6 -8.8 -10.2 a4.1 4.1 0 0 1 8.8 -1.6 a4.1 4.1 0 0 1 8.8 1.6 c0 3.6 -3.8 6.8 -8.8 10.2z" fill="currentColor" stroke="none"/>
+      <path d="M30 13 q-8 -7 -18 -6 M30 13 q-8 7 -18 6" />
+      <path d="M200 13 q8 -7 18 -6 M200 13 q8 7 18 6"/>
+    </svg>
+  </div>
+  <p class="reveal">Gracias por compartir este momento<br>tan importante para nosotros.</p>
+</section>
+
+<!-- ==================== CONFIRMACIÓN ==================== -->
+<section id="rsvp">
+  <div class="eyebrow reveal">Confirmación</div>
+  <div class="reveal">
+    <div class="pase-caja">
+      <div class="k">Invitación para</div>
+      <div class="n">Dayana y Liz</div>
+      <div class="c">2 invitadas</div>
+    </div>
+  </div>
+  <p class="reveal" style="margin-top:1rem;font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:#1F1F1F">
+    Tu presencia hará este día aún más especial.<br>Por favor confirma tu asistencia.
+  </p>
+  <a class="boton reveal" href="https://wa.me/50250948815?text=%C2%A1Hola%21%20Confirmamos%20nuestra%20asistencia%20a%20la%20cena%20para%20compartir%20de%20Darlyn%20y%20Alvaro%20%F0%9F%A4%8D%20%E2%80%94%20Dayana%20y%20Liz%20%282%20invitadas%29" target="_blank" rel="noopener">Confirmar por WhatsApp</a>
+</section>
+
+<!-- ==================== PIE ==================== -->
+<footer>
+  <div class="script">Darlyn y Alvaro</div>
+  <p>Con amor, les esperamos</p>
+</footer>
+
+<script>
+  // ====== FECHA DE LA CENA ======
+  const fechaCena = new Date(2026, 6, 11, 18, 0, 0); // sábado 11 jul, 6:00 pm
+
+  function abrir(){
+    document.getElementById('portada').classList.add('abierta');
+  }
+
+  function actualizar(){
+    const ahora = new Date();
+    let diff = fechaCena - ahora;
+    if(diff < 0) diff = 0;
+    document.getElementById('dias').textContent  = Math.floor(diff / 86400000);
+    document.getElementById('horas').textContent = Math.floor((diff % 86400000) / 3600000);
+    document.getElementById('min').textContent   = Math.floor((diff % 3600000) / 60000);
+    document.getElementById('seg').textContent   = Math.floor((diff % 60000) / 1000);
+  }
+  actualizar();
+  setInterval(actualizar, 1000);
+
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+  },{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
